@@ -15,3 +15,5 @@ function doUpdate() {
         die("Please, re-launch app.".PHP_EOL);
     }
 }
+
+?>

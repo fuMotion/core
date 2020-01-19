@@ -5,8 +5,9 @@ function doSpy() {
     $filename = "/fumotion/logs/emotion.log";
     if (strtolower(readline(""))=="да") {
         $json = explode(PHP_EOL, file_get_contents("/fumotion/logs/emotion.log"));
+        if (count($json)<1) {echo "Нет новых событий.".PHP_EOL; return;}
         foreach($json as $request) {
-            $request = json_decode(str_replace("},","}",$request),true);
+            $request = json_decode(str_replace('},','}',$request),true);
             echo "IP адрес {$request['remote_addr']} ";
             $request['request'] = explode(" ",$request['request']);
             switch($request['request'][0]) {
